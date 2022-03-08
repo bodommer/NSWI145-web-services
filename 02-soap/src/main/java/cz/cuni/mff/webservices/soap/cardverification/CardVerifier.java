@@ -11,4 +11,8 @@ public class CardVerifier implements ICardVerifier {
                 && (code.charAt(1) >= 48 && code.charAt(1) <= 57)   // second char is a digit
                 && (code.charAt(1) - 48) % 2 == 0;                  // random true/false -> to mock verification in DB
     }
+
+    public boolean addCard(String code) {
+        return code.length() == 14;
+    }
 }

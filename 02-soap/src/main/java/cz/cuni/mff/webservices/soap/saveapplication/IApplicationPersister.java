@@ -17,10 +17,19 @@ public interface IApplicationPersister {
      * @param accommodationEnd   date of the application end - format to be used is dd/MM/yyyy
      * @param pricePerNight      agreed price per night
      * @param room               room number
-     * @return true if the process went successfully, false otherwise
+     * @return application code if the process went successfully, null otherwise
      * @throws InterruptedException when thread's sleep() is interrupted
      */
     @WebMethod
-    public boolean persist(String firstName, String lastName, String accommodationStart, String accommodationEnd,
+    public String persist(String firstName, String lastName, String accommodationStart, String accommodationEnd,
                            int pricePerNight, String room) throws InterruptedException;
+
+    /**
+     * Removes an application from the database.
+     *
+     * @param code the code of the application to be removed
+     * @return true if the application was removed, false otherwise.
+     */
+    @WebMethod
+    public boolean remove(String code);
 }

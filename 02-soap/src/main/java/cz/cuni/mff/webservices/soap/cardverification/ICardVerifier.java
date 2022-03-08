@@ -14,4 +14,13 @@ public interface ICardVerifier {
      */
     @WebMethod
     public boolean verify(String code);
+
+    /**
+     * Adds a new student card code to the database.
+     *
+     * @param code the card code to be added
+     * @return true if the code is valid, false otherwise (code won't be saved)
+     */
+    @WebMethod
+    public boolean addCard(String code);
 }
