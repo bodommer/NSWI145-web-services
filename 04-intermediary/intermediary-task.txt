@@ -1,0 +1,6 @@
+The task of the intermediary is to provide additional option to checking the card verification.
+If the checking person knows that the card won't pass (the card holder is not from that university
+or is someone with no valid student card), they can manually override this compulsory check to make
+sure the card validation passes.
+The header of the request contains behavior definition and the attribute 'override' defines whether
+the result should be overridden if it is negative. This override is, of course, properly logged.
