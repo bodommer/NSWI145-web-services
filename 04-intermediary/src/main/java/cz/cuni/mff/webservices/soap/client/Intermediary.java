@@ -1,5 +1,6 @@
 package cz.cuni.mff.webservices.soap.client;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -7,52 +8,101 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.xml.soap.*;
 
 import javax.xml.namespace.QName;
+import java.io.IOException;
 
-@WebServlet("/intermediary")
+@WebServlet(name = "verificationClient", value = "/extendedVerify")
 public class Intermediary extends HttpServlet {
 
+    private static final String NAMESPACE = "http://cardverification.soap.webservices.mff.cuni.cz/";
+
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+    public void init() {
+        // NOP
+    }
+
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //response.setContentType("text/html");
+
+        // print welcome message
+        //response.getWriter().println("<html><body><h1>Welcome to the Card Verifier Client!</h1></body></html>");
+    }
+
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             SOAPConnectionFactory soapcf = SOAPConnectionFactory.newInstance();
             SOAPConnection soapc = soapcf.createConnection();
 
-            MessageFactory mf = MessageFactory.newInstance();
-            SOAPMessage soapm = mf.createMessage(new MimeHeaders(), request.getInputStream());
+            MessageFactory mf = MessageFactory.newInstance(SOAPConstants.SOAP_1_1_PROTOCOL);
+            SOAPMessage soapm = mf.createMessage(null, request.getInputStream());
 
-            SOAPPart soapp = soapm.getSOAPPart();
-            SOAPEnvelope soape = soapp.getEnvelope();
-            SOAPBody soapb = soape.getBody();
+            SOAPHeader header = soapm.getSOAPHeader();
 
-//            SOAPHeader header = soapm.getSOAPHeader();
+            soapm.getMimeHeaders().setHeader("Content-Type", "text/xml");
 
-//            Header removal
-//            header.detachNode();
+            boolean overrideOption = false;
 
+            if (header.hasChildNodes()) {
+                Node flag = header.getChildElements(new QName(null, "behavior")).next();
+                String flagValue = flag.getAttributes().getNamedItem("override").getNodeValue();
 
-            QName name = new QName("http://cardverification.soap.webservices.mff.cuni.cz/", "CardVerifier");
-            SOAPElement soapel = soapb.addBodyElement(name);
+                if (flagValue != null && !flagValue.equals("0")) {
+                    overrideOption = true;
+                    System.out.println("Validation override option applied - always returning true.");
+                } else {
+                    System.out.println("No override option applied.");
+                }
+                header.removeChild(flag);
+            } else {
+                System.err.println("Expected override options header not found!");
+            }
 
-            soapel.addChildElement(
-                    new QName("", "arg0")).addTextNode("S4204567345678");
-            String endpoint = "http://127.0.0.1:8000/verification";
+            // execute service call
+            String endpoint = "http://127.0.0.1:8080/soap";
+            System.out.println(SOAPHelper.getSOAPMessageAsString(soapm));
+            System.out.println("Mime headers");
+            soapm.getMimeHeaders().getAllHeaders().forEachRemaining(a -> System.out.println(a.getName() + " " + a.getValue()));
             SOAPMessage soapResponse = soapc.call(soapm, endpoint);
+            soapc.close();
+
             SOAPBody responseBody = soapResponse.getSOAPBody();
 
             if (responseBody.hasFault()) {
                 System.out.println(responseBody.getFault().getFaultString());
             } else {
 
-                QName result = new QName("http://cardverification.soap.webservices.mff.cuni.cz/", "result");
+                QName result = new QName(NAMESPACE, "verifyResponse", "ns2");
 
-                SOAPBodyElement finalResponse = (SOAPBodyElement)
-                        responseBody.getChildElements(result).next();
+                SOAPBodyElement serviceResponse = (SOAPBodyElement) responseBody.getChildElements(result).next();
+                SOAPBodyElement responseValue = (SOAPBodyElement) serviceResponse.getChildElements().next();
 
-                System.out.println(finalResponse.getValue());
+                QName overrideHeader = new QName(NAMESPACE,
+                        "overrideApplied");
+
+                if (!responseValue.getValue().isEmpty() && responseValue.getValue().equals("true")) {
+                    System.out.println("Card is valid, no override necessary.");
+
+                    soapResponse.getSOAPHeader().addHeaderElement(overrideHeader).addTextNode("false");
+                } else {
+                    if (overrideOption) {
+                        System.out.println("Card is not valid, applying override.");
+                        responseBody.getChildElements(result).next().setTextContent("true");
+                        soapResponse.getSOAPHeader().addHeaderElement(overrideHeader).addTextNode("true");
+                    } else {
+                        System.out.println("Card is not valid!");
+                        soapResponse.getSOAPHeader().addHeaderElement(overrideHeader).addTextNode("false");
+                    }
+                }
+                soapResponse.writeTo(response.getOutputStream());
             }
-            soapc.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void destroy() {
+        // NOP
     }
 }

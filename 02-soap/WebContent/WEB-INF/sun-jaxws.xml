@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+    <endpoint
+            name="CardVerification"
+            implementation="cz.cuni.mff.webservices.soap.cardverification.CardVerifier"
+            url-pattern="/" />
+    <!--            access as localhost:8080/<war name>-->
+<!--    access as localhost:8080/<war name>/verify -->
+<!--            url-pattern="/verify"/>-->
+
+    <!-- <endpoint
+            name="SaveApplication"
+            implementation="cz.cuni.mff.webservices.soap.saveapplication.ApplicationPersister"
+            url-pattern="/save"/>-->
+</endpoints>

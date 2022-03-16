@@ -6,6 +6,7 @@ import jakarta.jws.WebService;
 public class CardVerifier implements ICardVerifier {
 
     public boolean verify(String code) {
+        System.out.println("Request accepted");
         return code.startsWith("S")                                 // starts with 'S'
                 && code.length() == 14                              // 14 chars
                 && (code.charAt(1) >= 48 && code.charAt(1) <= 57)   // second char is a digit
