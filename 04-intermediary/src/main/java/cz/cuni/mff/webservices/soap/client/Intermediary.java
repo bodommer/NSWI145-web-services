@@ -34,12 +34,10 @@ public class Intermediary extends HttpServlet {
             SOAPConnectionFactory soapcf = SOAPConnectionFactory.newInstance();
             SOAPConnection soapc = soapcf.createConnection();
 
-            MessageFactory mf = MessageFactory.newInstance(SOAPConstants.SOAP_1_1_PROTOCOL);
-            SOAPMessage soapm = mf.createMessage(null, request.getInputStream());
+            MessageFactory mf = MessageFactory.newInstance();
+            SOAPMessage soapm = mf.createMessage(new MimeHeaders(), request.getInputStream());
 
             SOAPHeader header = soapm.getSOAPHeader();
-
-            soapm.getMimeHeaders().setHeader("Content-Type", "text/xml");
 
             boolean overrideOption = false;
 
@@ -59,10 +57,7 @@ public class Intermediary extends HttpServlet {
             }
 
             // execute service call
-            String endpoint = "http://127.0.0.1:8080/soap";
-            System.out.println(SOAPHelper.getSOAPMessageAsString(soapm));
-            System.out.println("Mime headers");
-            soapm.getMimeHeaders().getAllHeaders().forEachRemaining(a -> System.out.println(a.getName() + " " + a.getValue()));
+            String endpoint = "http://127.0.0.1:8000/verification";
             SOAPMessage soapResponse = soapc.call(soapm, endpoint);
             soapc.close();
 
@@ -77,23 +72,28 @@ public class Intermediary extends HttpServlet {
                 SOAPBodyElement serviceResponse = (SOAPBodyElement) responseBody.getChildElements(result).next();
                 SOAPBodyElement responseValue = (SOAPBodyElement) serviceResponse.getChildElements().next();
 
-                QName overrideHeader = new QName(NAMESPACE,
-                        "overrideApplied");
+                QName overrideHeader = new QName(NAMESPACE,"overrideApplied");
 
+                String overrideInfo = "false";
                 if (!responseValue.getValue().isEmpty() && responseValue.getValue().equals("true")) {
                     System.out.println("Card is valid, no override necessary.");
-
-                    soapResponse.getSOAPHeader().addHeaderElement(overrideHeader).addTextNode("false");
                 } else {
                     if (overrideOption) {
                         System.out.println("Card is not valid, applying override.");
                         responseBody.getChildElements(result).next().setTextContent("true");
-                        soapResponse.getSOAPHeader().addHeaderElement(overrideHeader).addTextNode("true");
+                        overrideInfo = "true";
                     } else {
                         System.out.println("Card is not valid!");
-                        soapResponse.getSOAPHeader().addHeaderElement(overrideHeader).addTextNode("false");
                     }
                 }
+
+                // add info back to response
+                SOAPHeader responseHeader = soapResponse.getSOAPPart().getEnvelope().getHeader();
+                if (responseHeader == null) {
+                    responseHeader = soapResponse.getSOAPPart().getEnvelope().addHeader();
+                }
+                responseHeader.addHeaderElement(overrideHeader).addTextNode(overrideInfo);
+
                 soapResponse.writeTo(response.getOutputStream());
             }
         } catch (Exception e) {
