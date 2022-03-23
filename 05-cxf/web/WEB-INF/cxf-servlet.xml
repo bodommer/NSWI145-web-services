@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:soap="http://cxf.apache.org/bindings/soap"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd
+http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <jaxws:endpoint
+            xmlns:customer="http://127.0.0.1:8000/"
+            id="verificationServiceHTTP"
+            address="/verificationPort"
+            serviceName="customer:verificationService"
+            endpointName="customer:verificationPort"
+            implementor="cz.cuni.mff.webservices.soap.cardverification.ICardVerifierImpl">
+        <!--jaxws:properties>
+            <entry key="schema-validation-enabled" value="true" />
+        </jaxws:properties-->
+        <jaxws:inInterceptors>
+            <bean  class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
+                <constructor-arg>
+                    <map>
+                        <entry key="action" value="UsernameToken"/>
+                        <entry key="passwordType" value="PasswordText"/>
+                        <entry key="passwordCallbackClass" value="cz.cuni.mff.webservices.soap.cxf.PasswordCallback"/>
+                    </map>
+                </constructor-arg>
+            </bean>
+        </jaxws:inInterceptors>
+    </jaxws:endpoint>
+</beans>

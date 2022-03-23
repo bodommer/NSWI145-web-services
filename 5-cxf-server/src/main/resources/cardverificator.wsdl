@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://cardverification.soap.webservices.mff.cuni.cz/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://cardverification.soap.webservices.mff.cuni.cz/" name="CardVerifierService">
+  <types>
+    <xs:schema xmlns:tns="http://cardverification.soap.webservices.mff.cuni.cz/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://cardverification.soap.webservices.mff.cuni.cz/">
+      <xs:element name="addCard" type="tns:addCard"/>
+      <xs:element name="addCardResponse" type="tns:addCardResponse"/>
+      <xs:element name="verify" type="tns:verify"/>
+      <xs:element name="verifyResponse" type="tns:verifyResponse"/>
+      <xs:complexType name="verify">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="verifyResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addCard">
+        <xs:sequence>
+          <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="addCardResponse">
+        <xs:sequence>
+          <xs:element name="return" type="xs:boolean"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="verify">
+    <part name="parameters" element="tns:verify"/>
+  </message>
+  <message name="verifyResponse">
+    <part name="parameters" element="tns:verifyResponse"/>
+  </message>
+  <message name="addCard">
+    <part name="parameters" element="tns:addCard"/>
+  </message>
+  <message name="addCardResponse">
+    <part name="parameters" element="tns:addCardResponse"/>
+  </message>
+  <portType name="ICardVerifier">
+    <operation name="verify">
+      <input message="tns:verify"/>
+      <output message="tns:verifyResponse"/>
+    </operation>
+    <operation name="addCard">
+      <input message="tns:addCard"/>
+      <output message="tns:addCardResponse"/>
+    </operation>
+  </portType>
+  <binding name="CardVerifierPortBinding" type="tns:ICardVerifier">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="verify">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="addCard">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="CardVerifierService">
+    <port name="CardVerifierPort" binding="tns:CardVerifierPortBinding">
+      <soap:address location="http://127.0.0.1:8000/verification"/>
+    </port>
+  </service>
+</definitions>
