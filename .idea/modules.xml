@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/04-intermediary/04-intermediary.iml" filepath="$PROJECT_DIR$/04-intermediary/04-intermediary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05-cxf/05-cxf.iml" filepath="$PROJECT_DIR$/05-cxf/05-cxf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06-uddi/06-uddi.iml" filepath="$PROJECT_DIR$/06-uddi/06-uddi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/NSWI145-web-services.iml" filepath="$PROJECT_DIR$/.idea/NSWI145-web-services.iml" />
+    </modules>
+  </component>
+</project>

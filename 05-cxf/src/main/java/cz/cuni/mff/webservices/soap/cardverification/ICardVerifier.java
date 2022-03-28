@@ -19,8 +19,8 @@ import javax.xml.ws.ResponseWrapper;
 public interface ICardVerifier {
 
     @WebMethod
-    @RequestWrapper(localName = "verify", targetNamespace = "http://cardverification.soap.webservices.mff.cuni.cz/", className = "cz.cuni.mff.webservices.soap.cardverification.Verify")
-    @ResponseWrapper(localName = "verifyResponse", targetNamespace = "http://cardverification.soap.webservices.mff.cuni.cz/", className = "cz.cuni.mff.webservices.soap.cardverification.VerifyResponse")
+    @RequestWrapper(localName = "verify", targetNamespace = "http://cardverification.soap.webservices.mff.cuni.cz/", className = "cz.cuni.mff.webservices.soap.cz.cuni.mff.webservices.soap.cardverification.Verify")
+    @ResponseWrapper(localName = "verifyResponse", targetNamespace = "http://cardverification.soap.webservices.mff.cuni.cz/", className = "cz.cuni.mff.webservices.soap.cz.cuni.mff.webservices.soap.cardverification.VerifyResponse")
     @WebResult(name = "return", targetNamespace = "")
     public boolean verify(
         @WebParam(name = "arg0", targetNamespace = "")
@@ -28,8 +28,8 @@ public interface ICardVerifier {
     );
 
     @WebMethod
-    @RequestWrapper(localName = "addCard", targetNamespace = "http://cardverification.soap.webservices.mff.cuni.cz/", className = "cz.cuni.mff.webservices.soap.cardverification.AddCard")
-    @ResponseWrapper(localName = "addCardResponse", targetNamespace = "http://cardverification.soap.webservices.mff.cuni.cz/", className = "cz.cuni.mff.webservices.soap.cardverification.AddCardResponse")
+    @RequestWrapper(localName = "addCard", targetNamespace = "http://cardverification.soap.webservices.mff.cuni.cz/", className = "cz.cuni.mff.webservices.soap.cz.cuni.mff.webservices.soap.cardverification.AddCard")
+    @ResponseWrapper(localName = "addCardResponse", targetNamespace = "http://cardverification.soap.webservices.mff.cuni.cz/", className = "cz.cuni.mff.webservices.soap.cz.cuni.mff.webservices.soap.cardverification.AddCardResponse")
     @WebResult(name = "return", targetNamespace = "")
     public boolean addCard(
         @WebParam(name = "arg0", targetNamespace = "")

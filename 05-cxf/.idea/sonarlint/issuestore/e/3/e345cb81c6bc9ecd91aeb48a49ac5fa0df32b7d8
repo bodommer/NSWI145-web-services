@@ -1,0 +1,11 @@
+
+f	java:S117#"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëó í
+`	java:S112'"FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëó í
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ
+u
+java:S1488"_Immediately return this expression instead of assigning it to the temporary variable "_return".(ëó í
+u
+java:S1488#"_Immediately return this expression instead of assigning it to the temporary variable "_return".(ëó í
+l
+java:S4144 "VUpdate this method so that its implementation is not identical to "verify" on line 19.(º†Õô

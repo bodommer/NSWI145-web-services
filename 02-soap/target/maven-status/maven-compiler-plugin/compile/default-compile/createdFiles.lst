@@ -1,0 +1,6 @@
+cz\cuni\mff\webservices\soap\cardverification\ICardVerifier.class
+cz\cuni\mff\webservices\soap\saveapplication\IApplicationPersister.class
+cz\cuni\mff\webservices\soap\cardverification\SoapRunner.class
+cz\cuni\mff\webservices\soap\saveapplication\ApplicationPersister.class
+cz\cuni\mff\webservices\soap\saveapplication\SoapRunner.class
+cz\cuni\mff\webservices\soap\cardverification\CardVerifier.class

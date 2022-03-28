@@ -23,7 +23,7 @@
   <import resource="classpath:META-INF/cxf/cxf.xml" />
   <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
   
-  <jaxws:endpoint id="cardverification" implementor="cz.cuni.mff.webservices.soap.cardverification.CardVerifier"
-     address="/cardverification" />
+  <jaxws:endpoint id="verify" implementor="cz.cuni.mff.webservices.soap.cardverification.CardVerifier" 
+     address="verify" />
 
 </beans>

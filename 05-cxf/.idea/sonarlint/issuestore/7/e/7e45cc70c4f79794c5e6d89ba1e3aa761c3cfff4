@@ -1,0 +1,21 @@
+
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(Çé¡æøÿÿÿÿ
+‘
+java:S1192"vDefine a constant instead of duplicating this literal "http://cardverification.soap.webservices.mff.cuni.cz/" 4 times.(ß¨Êûÿÿÿÿ
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ß¨Êûÿÿÿÿ
+
+java:S1186$"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Œ³ÕĞ8ê÷ÈÁû/
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(üãŒ¬8ê÷ÈÁû/
+b
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(¯Ğ•“8ê÷ÈÁû/
+{
+java:S2293M"YReplace the type specification in this constructor call with the diamond operator ("<>").(í°¤úÿÿÿÿ8ê÷ÈÁû/
+{
+java:S2293V"YReplace the type specification in this constructor call with the diamond operator ("<>").(¶š²ıøÿÿÿÿ8ê÷ÈÁû/
+v
+java:S2293_"YReplace the type specification in this constructor call with the diamond operator ("<>").(»ÿ½˜8ê÷ÈÁû/
+{
+java:S2293h"YReplace the type specification in this constructor call with the diamond operator ("<>").(±øÁ­øÿÿÿÿ8ê÷ÈÁû/

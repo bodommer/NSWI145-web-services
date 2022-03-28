@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://cardverification.soap.webservices.mff.cuni.cz/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://cardverification.soap.webservices.mff.cuni.cz/" name="CardVerifierService">
+<definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://cz.cuni.mff.webservices.soap.cardverification.soap.webservices.mff.cuni.cz/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://cz.cuni.mff.webservices.soap.cardverification.soap.webservices.mff.cuni.cz/" name="CardVerifierService">
   <types>
-    <xs:schema xmlns:tns="http://cardverification.soap.webservices.mff.cuni.cz/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://cardverification.soap.webservices.mff.cuni.cz/">
+    <xs:schema xmlns:tns="http://cz.cuni.mff.webservices.soap.cardverification.soap.webservices.mff.cuni.cz/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://cz.cuni.mff.webservices.soap.cardverification.soap.webservices.mff.cuni.cz/">
       <xs:element name="addCard" type="tns:addCard"/>
       <xs:element name="addCardResponse" type="tns:addCardResponse"/>
       <xs:element name="verify" type="tns:verify"/>

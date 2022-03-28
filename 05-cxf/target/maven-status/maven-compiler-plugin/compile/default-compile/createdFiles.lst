@@ -1,0 +1,15 @@
+cz\cuni\mff\webservices\soap\cardverification\ICardVerifierImpl.class
+cz\cuni\mff\webservices\soap\cxf\CardVerifier.class
+cz\cuni\mff\webservices\soap\cardverification\ICardVerifierServer.class
+cz\cuni\mff\webservices\soap\cardverification\VerifyResponse.class
+cz\cuni\mff\webservices\soap\cardverification\ICardVerifier_CardVerifierPort_Client.class
+cz\cuni\mff\webservices\soap\cardverification\package-info.class
+cz\cuni\mff\webservices\soap\cxf\PasswordCallback.class
+cz\cuni\mff\webservices\soap\cardverification\ICardVerifier.class
+cz\cuni\mff\webservices\soap\cardverification\Verify.class
+cz\cuni\mff\webservices\soap\cxf\SoapClient.class
+cz\cuni\mff\webservices\soap\cardverification\AddCardResponse.class
+cz\cuni\mff\webservices\soap\cardverification\AddCard.class
+cz\cuni\mff\webservices\soap\cardverification\CardVerifierService.class
+cz\cuni\mff\webservices\soap\cxf\ICardVerifier.class
+cz\cuni\mff\webservices\soap\cardverification\ObjectFactory.class

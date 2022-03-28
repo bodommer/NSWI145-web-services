@@ -1,0 +1,81 @@
+<component name="libraryTable">
+  <library name="CXF Runtime">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/activemq-broker-5.8.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/activemq-client-5.8.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/activemq-openwire-legacy-5.8.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/antlr-2.7.7.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/aopalliance-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/asm-3.3.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/commons-codec-1.9.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/commons-collections-3.2.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/commons-lang-2.6.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/cxf-2.7.9.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/cxf-manifest.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/cxf-services-sts-core-2.7.9.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/cxf-services-ws-discovery-api-2.7.9.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/cxf-services-ws-discovery-service-2.7.9.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/cxf-services-wsn-api-2.7.9.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/cxf-services-wsn-core-2.7.9.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/cxf-xjc-boolean-2.6.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/cxf-xjc-bug671-2.6.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/cxf-xjc-dv-2.6.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/cxf-xjc-runtime-2.6.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/cxf-xjc-ts-2.6.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/ehcache-core-2.5.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/FastInfoset-1.2.13.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/geronimo-j2ee-management_1.1_spec-1.0.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/geronimo-javamail_1.4_spec-1.7.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/geronimo-jaxws_2.2_spec-1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/geronimo-jms_1.1_spec-1.1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/geronimo-servlet_3.0_spec-1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/hawtbuf-1.9.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/httpasyncclient-4.0-beta3.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/httpclient-4.2.5.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/httpcore-4.2.4.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/httpcore-nio-4.2.4.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/isorelax-20030108.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/javax.ws.rs-api-2.0-m10.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/jaxb-api-2.2.6.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/jaxb-impl-2.2.6.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/jettison-1.3.5.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/joda-time-1.6.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/js-1.7R2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/mina-core-2.0.7.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/msv-core-2011.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/neethi-3.0.3.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/oauth-20100527.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/oauth-provider-20100527.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/opensaml-2.5.1-1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/openws-1.4.2-1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/relaxngDatatype-20020414.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/slf4j-api-1.7.5.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/slf4j-jdk14-1.7.5.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/spring-aop-3.0.7.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/spring-asm-3.0.7.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/spring-beans-3.0.7.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/spring-context-3.0.7.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/spring-core-3.0.7.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/spring-expression-3.0.7.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/spring-jms-3.0.7.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/spring-tx-3.0.7.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/spring-web-3.0.7.RELEASE.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/stax2-api-3.1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/velocity-1.7.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/woodstox-core-asl-4.2.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/wsdl4j-1.6.3.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/wss4j-1.6.14.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/xml-resolver-1.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/xmlbeans-2.6.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/xmlschema-core-2.1.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/xmlsec-1.5.6.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/xmltooling-1.3.2-1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/cxf-2.7.9/apache-cxf-2.7.9/lib/xsdlib-2010.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/wss4j-1.6.14-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

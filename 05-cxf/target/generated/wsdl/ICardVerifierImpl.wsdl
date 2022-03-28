@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ICardVerifierService" targetNamespace="http://cardverification.soap.webservices.mff.cuni.cz" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://cardverification.soap.webservices.mff.cuni.cz" xmlns:ns1="http://cardverification.soap.webservices.mff.cuni.cz/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:tns="http://cardverification.soap.webservices.mff.cuni.cz/" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://cardverification.soap.webservices.mff.cuni.cz/" version="1.0">
+
+  <xs:element name="addCard" type="tns:addCard"/>
+
+  <xs:element name="addCardResponse" type="tns:addCardResponse"/>
+
+  <xs:element name="verify" type="tns:verify"/>
+
+  <xs:element name="verifyResponse" type="tns:verifyResponse"/>
+
+  <xs:complexType name="verify">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="verifyResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addCardResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addCard">
+    <wsdl:part name="parameters" element="ns1:addCard">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verifyResponse">
+    <wsdl:part name="parameters" element="ns1:verifyResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="verify">
+    <wsdl:part name="parameters" element="ns1:verify">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addCardResponse">
+    <wsdl:part name="parameters" element="ns1:addCardResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ICardVerifier">
+    <wsdl:operation name="verify">
+      <wsdl:input name="verify" message="ns1:verify">
+    </wsdl:input>
+      <wsdl:output name="verifyResponse" message="ns1:verifyResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addCard">
+      <wsdl:input name="addCard" message="ns1:addCard">
+    </wsdl:input>
+      <wsdl:output name="addCardResponse" message="ns1:addCardResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ICardVerifierServiceSoapBinding" type="ns1:ICardVerifier">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="verify">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="verify">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="verifyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addCard">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ICardVerifierService">
+    <wsdl:port name="ICardVerifierImplPort" binding="ns1:ICardVerifierServiceSoapBinding">
+      <soap:address location="http://127.0.0.1:8000/verification"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

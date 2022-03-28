@@ -14,7 +14,7 @@ http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd">
                 <map>
                     <entry key="action" value="UsernameToken"/>
                     <entry key="passwordType" value="PasswordText"/>
-                    <entry key="passwordCallbackClass" value="cz.cuni.mff.webservices.soap.cardverification.PasswordCallback"/>
+                    <entry key="passwordCallbackClass" value="cz.cuni.mff.webservices.soap.cz.cuni.mff.webservices.soap.cardverification.PasswordCallback"/>
                 </map>
             </constructor-arg>
         </bean>

@@ -1,0 +1,26 @@
+
+k	java:S117?"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ø«Şÿÿÿÿÿ
+F
+java:S1128"0Remove this unused import 'javax.jws.WebResult'.(¬ÁÙ
+\
+java:S1128"ARemove this unused import 'javax.xml.bind.annotation.XmlSeeAlso'.(àê¼ñøÿÿÿÿ
+S
+java:S1128"8Remove this unused import 'javax.xml.ws.RequestWrapper'.(×ñ„ûÿÿÿÿ
+K
+java:S1128"0Remove this unused import 'javax.jws.WebMethod'.(ò£¼úÿÿÿÿ
+T
+java:S1128"9Remove this unused import 'javax.xml.ws.ResponseWrapper'.(°ºç¢ÿÿÿÿÿ
+E
+java:S1128"/Remove this unused import 'javax.jws.WebParam'.(Ä™‰
+O
+java:S11994"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8Ş­¿û/
+L
+java:S1128"1Remove this unused import 'javax.jws.WebService'.(‡œĞ£ıÿÿÿÿ
+H
+java:S1199<"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+k	java:S117>"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šÂ©ûüÿÿÿÿ
+r	java:S1176"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ì“¬‹øÿÿÿÿ8Ş­¿û/
+k	java:S1177"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å¦Ù‹ùÿÿÿÿ
+n	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ó°íâûÿÿÿÿ8è÷ÈÁû/
+Z
+java:S1197""8Move the array designator from the variable to the type.(‚Æ×àúÿÿÿÿ8è÷ÈÁû/

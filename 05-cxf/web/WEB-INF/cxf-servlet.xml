@@ -14,7 +14,7 @@ http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
             address="/verificationPort"
             serviceName="customer:verificationService"
             endpointName="customer:verificationPort"
-            implementor="cz.cuni.mff.webservices.soap.cardverification.ICardVerifierImpl">
+            implementor="cz.cuni.mff.webservices.soap.cz.cuni.mff.webservices.soap.cardverification.ICardVerifierImpl">
         <!--jaxws:properties>
             <entry key="schema-validation-enabled" value="true" />
         </jaxws:properties-->
