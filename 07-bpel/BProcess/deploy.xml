@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<deploy
+    xmlns="http://www.apache.org/ode/schemas/dd/2007/03"
+    xmlns:tnsbpel="http://bprocess.soap.webservices.mff.cuni.cz/bpel"
+    xmlns:tnswsdl="http://bprocess.soap.webservices.mff.cuni.cz/wsdl"
+    xmlns:persist="http://saveapplication.soap.webservices.mff.cuni.cz/"
+ 	  xmlns:verify="http://cardverification.soap.webservices.mff.cuni.cz/" >
+
+  <process name="tnsbpel:BusinessProcess">
+    <active>true</active>
+    <provide partnerLink="ProcessInputLink">
+      <service name="tnswsdl:ProcessInputService" port="ProcessInputPort" />
+    </provide>
+    
+    <invoke partnerLink="VerifyCardLink">
+	    <service name="verify:CardVerifierService" port="CardVerifierPort"/>
+	</invoke>
+	
+	<invoke partnerLink="AddCardLink">
+	    <service name="verify:CardVerifierService" port="CardVerifierPort"/>
+	</invoke>
+	
+	<invoke partnerLink="PersistLink">
+	    <service name="persist:ApplicationPersisterService" port="ApplicationPersisterPort"/>
+	</invoke>
+	
+    <provide partnerLink="VerifyCardLink">
+	    <service name="tnswsdl:ProcessInputService" port="VerifyCardPort"/>
+    </provide>
+
+    <provide partnerLink="AddCardLink">
+	    <service name="tnswsdl:ProcessInputService" port="AddCardPort"/>
+    </provide>
+
+    <provide partnerLink="PersistLink">
+	    <service name="tnswsdl:ProcessInputService" port="PersistPort"/>
+    </provide>
+    
+  </process>
+
+</deploy>

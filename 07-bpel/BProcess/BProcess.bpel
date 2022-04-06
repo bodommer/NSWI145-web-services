@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<process name="BusinessProcess"
+	targetNamespace="http://bprocess.soap.webservices.mff.cuni.cz/bpel"
+	xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+	xmlns:tns="http://bprocess.soap.webservices.mff.cuni.cz/bpel"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tnswsdl="http://bprocess.soap.webservices.mff.cuni.cz/wsdl"
+	xmlns:tnsxsd="http://bprocess.soap.webservices.mff.cuni.cz/xsd"
+	xmlns:persist="http://saveapplication.soap.webservices.mff.cuni.cz/"
+	xmlns:verify="http://cardverification.soap.webservices.mff.cuni.cz/"
+	queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0"
+	expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath2.0">
+
+	<import location="BProcess.wsdl"
+		namespace="http://bprocess.soap.webservices.mff.cuni.cz/wsdl"
+		importType="http://schemas.xmlsoap.org/wsdl/" />
+
+	<partnerLinks>
+		<partnerLink name="ProcessInputLink"
+			partnerLinkType="tnswsdl:ProcessLinkType" myRole="EntryRole" />
+		<partnerLink name="VerifyCardLink"
+			partnerLinkType="tnswsdl:VerifyCardLinkType"
+			myRole="VerifyClientRole" partnerRole="VerifyRole" />
+		<partnerLink name="AddCardLink"
+			partnerLinkType="tnswsdl:AddCardLinkType" myRole="AddCardClientRole"
+			partnerRole="AddCardRole" />
+		<partnerLink name="PersistLink"
+			partnerLinkType="tnswsdl:PersistLinkType" myRole="PersistClientRole"
+			partnerRole="PersistRole" />
+	</partnerLinks>
+
+	<variables>
+		<variable name="inputs" messageType="tnswsdl:ProcessInputMessage" />
+		<variable name="outputs" messageType="tnswsdl:ProcessOutputMessage" />
+		<variable name="outputsElement" type="xsd:boolean" />
+		
+		<variable name="cardNumberElement" type="verify:verify" />
+		<variable name="cardNumber" messageType="verify:verify" />
+		<variable name="isValid" messageType="verify:verifyResponse" />
+		<variable name="isValidElement" type="verify:verifyResponse" />
+		
+		<variable name="addCardElement" type="verify:addCard" />
+		<variable name="addCard" messageType="verify:addCard" />
+		<variable name="addCardResponse" messageType="verify:addCardResponse" />
+		<variable name="addCardResponseElement" type="verify:addCardResponse" />
+		
+		<variable name="applicationDataElement" type="persist:persist" />
+		<variable name="applicationData" messageType="persist:persist" />
+		<variable name="persistResponse" messageType="persist:persistResponse" />
+		<variable name="persistResponseElement" type="persist:persistResponse" />
+	</variables>
+
+	<sequence>
+
+		<receive name="ReceiveProcessInputs"
+			partnerLink="ProcessInputLink" portType="tnswsdl:ProcessPortType"
+			operation="processCard" variable="inputs" createInstance="yes" />
+
+		<assign validate="no" name="Assign">
+			<!-- Get Card Number from input -->
+			<copy>
+				<from>
+					<literal>
+						<verify:verify>
+							<verify:arg0></verify:arg0>
+						</verify:verify>
+					</literal>
+				</from>
+				<to variable="cardNumberElement" />
+			</copy>
+			<copy>
+				<from part="parameters" variable="inputs">
+                    <query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                        <![CDATA[card]]>
+                    </query>
+                </from>
+                <to>$cardNumberElement//verify:arg0</to>
+            </copy>
+            <copy>
+            	<from variable="cardNumberElement" />
+            	<to variable="cardNumber" part="parameters" />
+            </copy>
+            
+            <!-- Get Card Number 2 from input -->
+			<copy>
+				<from>
+					<literal>
+						<verify:verify>
+							<verify:arg0></verify:arg0>
+						</verify:verify>
+					</literal>
+				</from>
+				<to variable="addCardElement" />
+			</copy>
+			<copy>
+				<from part="parameters" variable="inputs">
+                    <query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                        <![CDATA[card]]>
+                    </query>
+                </from>
+                <to>$addCardElement//verify:arg0</to>
+            </copy>
+            <copy>
+            	<from variable="addCardElement" />
+            	<to variable="addCard" part="parameters" />
+            </copy>
+            
+            <!-- Get Application data from input -->
+            <copy>
+				<from>
+					<literal>
+						<persist:persist>
+							<persist:arg0></persist:arg0>
+							<persist:arg1></persist:arg1>
+							<persist:arg2></persist:arg2>
+							<persist:arg3></persist:arg3>
+							<persist:arg4></persist:arg4>
+							<persist:arg5></persist:arg5>
+						</persist:persist>
+					</literal>
+				</from>
+				<to variable="applicationDataElement" />
+			</copy>
+			<copy>
+				<from part="parameters" variable="inputs">
+                    <query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                        <![CDATA[arg0]]>
+                    </query>
+                </from>
+                <to>$applicationDataElement//persist:arg0</to>
+            </copy>
+			<copy>
+				<from part="parameters" variable="inputs">
+                    <query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                        <![CDATA[arg1]]>
+                    </query>
+                </from>
+                <to>$applicationDataElement//persist:arg1</to>
+            </copy>
+            <copy>
+				<from part="parameters" variable="inputs">
+                    <query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                        <![CDATA[arg2]]>
+                    </query>
+                </from>
+                <to>$applicationDataElement//persist:arg2</to>
+            </copy>
+            <copy>
+				<from part="parameters" variable="inputs">
+                    <query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                        <![CDATA[arg3]]>
+                    </query>
+                </from>
+                <to>$applicationDataElement//persist:arg3</to>
+            </copy>
+            <copy>
+				<from part="parameters" variable="inputs">
+                    <query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                        <![CDATA[arg4]]>
+                    </query>
+                </from>
+                <to>$applicationDataElement//persist:arg4</to>
+            </copy>
+            <copy>
+				<from part="parameters" variable="inputs">
+                    <query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                        <![CDATA[arg5]]>
+                    </query>
+                </from>
+                <to>$applicationDataElement//persist:arg5</to>
+            </copy>
+            <copy>
+            	<from variable="applicationDataElement" />
+            	<to variable="applicationData" part="parameters" />
+            </copy>
+        </assign>
+        
+        <invoke name="Invoke" 
+       			partnerLink="VerifyCardLink"
+       			operation="verify"
+       			inputVariable="cardNumber"
+       			outputVariable="isValid" />
+       			
+       	<assign>
+       		<copy>
+       			<from variable="isValid" part="parameters" />
+       			<to variable="isValidElement" />
+       		</copy>
+       	</assign>
+       			
+       	<assign name="initialAssign">
+		  	<copy>
+				<from>$isValidElement//verify:return</from>
+            	<to variable="outputs" part="parameters" />
+            </copy>
+		</assign>
+       			
+        <!-- Verification failed, try to add the card to the system -->
+       	<if>
+       		<condition>$isValidElement//verify:return</condition>
+       		<sequence><assign><copy><from variable="isValidElement" /> <to variable="isValidElement" /></copy></assign></sequence>
+       		<else>
+       			<invoke name="registerNewCard"
+       			  		partnerLink="AddCardLink"
+       			  		operation="addCard"
+       			  		inputVariable="addCard"
+       			  		outputVariable="addCardResponse" />
+     		</else>
+       	</if>
+      	
+     	<assign>
+       		<copy>
+       			<from variable="addCardResponse" part="parameters" />
+       			<to variable="addCardResponseElement" />
+       		</copy>
+       	</assign>
+       	
+       	<!-- If successfully added to system, make a reservation -->
+	  	<if>
+	  		<condition>$addCardResponseElement//verify:return</condition>
+	  		<sequence>
+       			<invoke name="persistApplication"
+       			  		partnerLink="PersistLink"
+       			  		operation="persist"
+       			  		inputVariable="applicationData"
+       			  		outputVariable="persistResponse" />
+       			  				<assign name="lastAssign">
+		  	<copy>
+				<from>$addCardResponseElement//verify:return</from>
+            	<to variable="outputs" part="parameters" />
+            </copy>
+		</assign>
+	  		</sequence>
+	  		<else>
+	  				<assign name="lastAssign">
+		  	<copy>
+				<from>$addCardResponseElement//verify:return</from>
+            	<to variable="outputs" part="parameters" />
+            </copy>
+		</assign></else>
+		</if>
+		
+
+       			
+        <reply name="ReplyProcessOutputs"
+        partnerLink="ProcessInputLink"
+        portType="tnswsdl:ProcessPortType"
+        operation="processCard"
+        variable="outputs" />
+        
+    </sequence>
+
+</process>
