@@ -1,0 +1,109 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/CharlesUniversity7/CardVerification/1.0.0
+  - description: Card Verification API
+    url: localhost:8080/08-rest
+info:
+  description: This is a simple Card Verification API
+  version: "1.0.0"
+  title: Simple Card Verification API
+  contact:
+    email: andrej.jurco@me.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: users
+    description: User calls
+paths:
+  /verify/{code}:
+    get:
+      tags:
+        - users
+      summary: verify card
+      operationId: verifyCard
+      description: By passing a card number, the service determines whether the card is valid or not.
+      parameters:
+        - in: path
+          name: code
+          schema:
+            type: string
+            example: S4202325618135
+          required: true
+          description: Card Number to be verified
+      responses:
+        '200':
+          description: Verification result - zero if the card is invalid, one otherwise
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: 1
+    post:
+      tags:
+        - users
+      summary: adds a card to the system
+      operationId: addCard
+      description: Adds a card to the system.
+      parameters:
+        - in: path
+          name: code
+          schema:
+            type: string
+            example: S4202325618135
+          required: true
+          
+          description: Card Number to be added
+      responses:
+        '200':
+          description: Returns one if the adding succeeded (and the code was correct 14-character length), zero otherwise
+    delete:
+      tags:
+        - users
+      summary: deletes a card from the system
+      operationId: deleteCard
+      description: Deletes a card from the system.
+      parameters:
+        - in: path
+          name: code
+          schema:
+            type: string
+            example: S4202325618135
+          required: true
+          description: Card Number to be deleted
+      responses:
+        '200':
+          description: Returns zero if card was not found in the system, one otherwise
+  /verify/{code1}/{code2}:
+    put:
+      tags:
+        - users
+      summary: update card
+      operationId: updateCard
+      description: Replaces old card code with a new one.
+      parameters:
+        - in: path
+          name: code1
+          schema:
+            type: string
+            example: S4202325618135
+          required: true
+          description: Card Number to be replaced
+        - in: path
+          name: code2
+          schema:
+            type: string
+            example: S4202325618135
+          required: true
+          description: Card Number that replaces the old one
+      responses:
+        '200':
+          description: Returns old code if it was not found in the database, new code if it was successfully replaced
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: S4202325618135
