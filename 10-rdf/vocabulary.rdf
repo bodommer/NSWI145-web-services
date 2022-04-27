@@ -1,0 +1,34 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix schema: <http://schema.org/> .
+@prefix acc: <http://webservices.ms.mff.cuni.cz/>
+
+
+# in LOV, it was not optimal to use schema:Accommodation for the dormitory
+
+acc:employedSince a rdfs:Property .
+
+acc:DormitoryEmployee rdf:type rdfs:Class ;
+                      rdfs:subClassOf foaf:Person ;
+                      acc:employedSince rdfs:Property ;
+
+acc:Dormitory rdf:type rdfs:Class ;
+              rdfs:subClassOf schema:Accommodation ;
+              aiiso:name rdfs:Literal ;
+              schema:yearBuilt rdfs:Literal ;
+              schema:numberOfRooms rdfs:Literal ;
+              schema:address rdfs:Literal ;
+
+acc:consistsOf rdf:type rdf:Property ;
+               rdfs:comment "the relation between a dormitory and some of its units or a unit and rooms"
+
+acc:hasFridge a rdfs:Property .
+acc:hasBathroom a rdfs:Property .
+
+acc:RoomUnit rdf:type rdfs:Class ;
+             schema:identifier rdfs:Literal ;
+             schema:floorLevel rdfs:Literal ;
+             schema:price rdfs:Literal ;
+             acc:hasFridge rdfs:Literal ;
+             acc:hasBathroom rdfs:Literal ;
+             rdfs:comment "A wrapper around the schema:Room providing some extra info"
