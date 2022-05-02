@@ -1,0 +1,17 @@
+{
+  "@context": {
+    "@base": "http://webservice.mff.cuni.cz/data-types/",
+    "acc": "http://webservices.ms.mff.cuni.cz/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "validationResult": "acc:cardVerificationResult",
+    "result": {
+      "@id": "acc:isStudent",
+      "@type": "xsd:boolean"
+    }
+  },
+  "validationResult": [
+    {
+      "result": false
+    }
+  ]
+}

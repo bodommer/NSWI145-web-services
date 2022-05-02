@@ -1,7 +1,10 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix aiiso: <http://purl.org/vocab/aiiso/schema> .
 @prefix schema: <http://schema.org/> .
-@prefix acc: <http://webservices.ms.mff.cuni.cz/>
+@prefix acc: <http://webservices.ms.mff.cuni.cz/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
 
 # in LOV, it was not optimal to use schema:Accommodation for the dormitory
@@ -10,20 +13,23 @@ acc:employedSince a rdfs:Property .
 
 acc:DormitoryEmployee rdf:type rdfs:Class ;
                       rdfs:subClassOf foaf:Person ;
-                      acc:employedSince rdfs:Property ;
+                      acc:employedSince rdfs:Property .
 
 acc:Dormitory rdf:type rdfs:Class ;
               rdfs:subClassOf schema:Accommodation ;
               aiiso:name rdfs:Literal ;
               schema:yearBuilt rdfs:Literal ;
               schema:numberOfRooms rdfs:Literal ;
-              schema:address rdfs:Literal ;
+              schema:address rdfs:Literal .
 
 acc:consistsOf rdf:type rdf:Property ;
-               rdfs:comment "the relation between a dormitory and some of its units or a unit and rooms"
+               rdfs:comment "the relation between a dormitory and some of its units or a unit and rooms" .
 
-acc:hasFridge a rdfs:Property .
-acc:hasBathroom a rdfs:Property .
+acc:hasFridge a rdfs:Property ;
+              rdfs:domain acc:RoomUnit .
+
+acc:hasBathroom a rdfs:Property ;
+                rdfs:domain acc:RoomUnit .
 
 acc:RoomUnit rdf:type rdfs:Class ;
              schema:identifier rdfs:Literal ;
@@ -31,4 +37,18 @@ acc:RoomUnit rdf:type rdfs:Class ;
              schema:price rdfs:Literal ;
              acc:hasFridge rdfs:Literal ;
              acc:hasBathroom rdfs:Literal ;
-             rdfs:comment "A wrapper around the schema:Room providing some extra info"
+             rdfs:comment "A wrapper around the schema:Room providing some extra info" .
+
+acc:CardVerificationResult rdf:type rdfs:Class ;
+                           rdfs:label "Card verification results"@en ,
+                                      "Výsledok overenia karty"@sk ;
+                           rdfs:comment "The result of a test to ensure that the applicant is a student"@en ,
+                                        "Výsledok overenia, že žiadateľ o ubytovanie je študentom"@sk .
+
+acc:isStudent a rdfs:Property ;
+              rdfs:label "Card is valid"@en ,
+                         "Karta je platná"@sk ;
+              rdfs:comment "The verification result itself"@en ,
+                           "Samotný výsledok kontroly"@sk ;
+              rdfs:domain acc:CardVerificationResult ;
+              rdfs:range xsd:boolean .

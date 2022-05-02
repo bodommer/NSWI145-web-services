@@ -1,0 +1,8 @@
+<!-- Note: Service used: CardVerifier#verify from 02-soap -->
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+   <S:Body>
+      <ns2:verifyResponse xmlns:ns2="http://cardverification.soap.webservices.mff.cuni.cz/">
+         <return>false</return>
+      </ns2:verifyResponse>
+   </S:Body>
+</S:Envelope>

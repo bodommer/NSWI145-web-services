@@ -1,0 +1,10 @@
+<!-- Note: Service used: CardVerifier#verify from 02-soap --> 
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:car="http://cardverification.soap.webservices.mff.cuni.cz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <car:verify>
+         <!--Optional:-->
+         <arg0>S000000000</arg0>
+      </car:verify>
+   </soapenv:Body>
+</soapenv:Envelope>
